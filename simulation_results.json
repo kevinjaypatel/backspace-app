@@ -1,0 +1,26 @@
+{
+    "PulseChemo": {
+        "stage": 4,
+        "initial_clonogens": 9941381551.055796,
+        "final_clonogens": 38829079708.39268,
+        "cure_time_days": null
+    },
+    "MTD_Chemo": {
+        "stage": 4,
+        "initial_clonogens": 9798881551.055796,
+        "final_clonogens": 16410011200.589481,
+        "cure_time_days": null
+    },
+    "HybridChemo": {
+        "stage": 4,
+        "initial_clonogens": 9941381551.055796,
+        "final_clonogens": 19624210056.631615,
+        "cure_time_days": null
+    },
+    "Radiotherapy": {
+        "stage": 1,
+        "initial_clonogens": 4867522.559599717,
+        "final_clonogens": 0.0,
+        "cure_time_days": 30.0
+    }
+}
