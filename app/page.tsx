@@ -169,7 +169,7 @@ export default function Home() {
               <img
                 src="/api/simulation-image"
                 alt="Cancer Simulation Graph"
-                className="max-w-full h-auto"
+                className="max-w-4xl w-full h-auto rounded-lg shadow-sm"
                 onError={(e) => {
                   console.error('Error loading image:', e);
                   (e.target as HTMLImageElement).src = '';
