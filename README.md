@@ -1,46 +1,163 @@
-# Python venv setup for the cancer progression script
+# Backspace App - Cancer Simulation Visualization
 
-This workspace contains a simple tumor progression simulation script (`import json.py`).
+A full-stack application for visualizing cancer progression simulations with a Python backend and Next.js frontend.
 
-Quick steps (PowerShell, run from the workspace root `c:\Users\reryh\Music\New folder`):
+## Quick Start for New Contributors
 
-1) Create a virtual environment
+This guide will help you get the project running locally.
 
-    python -m venv venv
+### Prerequisites
 
-2) (Optional) If PowerShell blocks activation due to execution policy, run:
+- **Node.js 18+** and npm (for the Next.js frontend)
+- **Python 3.8+** (for the simulation scripts)
+- **Git** (to clone the repository)
 
-    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+### Setup Instructions
 
-3) Activate the venv (PowerShell)
+#### 1. Clone the Repository
 
-    .\venv\Scripts\Activate.ps1
+```bash
+git clone https://github.com/kevinjaypatel/backspace-app.git
+cd backspace-app
+```
 
-   Or for cmd.exe:
+#### 2. Set Up Python Environment
 
-    .\venv\Scripts\activate.bat
+Navigate to the Python directory and set up the virtual environment:
 
-4) Upgrade pip and install dependencies
+```bash
+cd python
+python3 -m venv venv
+```
 
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
+Activate the virtual environment:
 
-5) Run the script
+**On macOS/Linux:**
 
-    python ".\import json.py"
+```bash
+source venv/bin/activate
+```
 
-   Note: The script filename contains a space and starts with the words `import json`, which can be confusing. I recommend renaming the file to something like `cancer_sim.py` and running:
+**On Windows:**
 
-    python cancer_sim.py
+```bash
+venv\Scripts\activate
+```
 
-6) Verify output
+Install Python dependencies:
 
-The script should write `cancer_progression.json` in the same folder. Check that file to confirm the simulation ran.
+```bash
+pip install -r requirements.txt
+```
 
-Why rename? The current filename `import json.py` is valid but awkward: it contains a space and looks like an import statement. Renaming avoids quoting and confusion and is safer for imports or reuse.
+#### 3. Run Python Simulations (Optional)
 
-If you'd like, I can:
-- Create the venv and install packages for you (I can run the commands here if you allow me to run terminal commands),
-- Or rename the file to a safer name and update the README and run a quick test.
+To generate simulation data and images:
 
-Tell me which of those you'd like me to do next.
+```bash
+# Run the latest simulation
+python python-latest.py
+
+# Or run other simulations
+python cancer_sim2.py
+python cancer_sim.py
+```
+
+This will create output files in the `../outputs/` directory.
+
+#### 4. Set Up Next.js Frontend
+
+Go back to the root directory:
+
+```bash
+cd ..
+```
+
+Install Node.js dependencies:
+
+```bash
+npm install
+```
+
+#### 5. Run the Development Server
+
+Start the Next.js development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at **http://localhost:3000**
+
+### Project Structure
+
+```
+backspace-app/
+├── app/                    # Next.js frontend (App Router)
+│   ├── api/               # API routes
+│   │   ├── simulation/    # Serves JSON data
+│   │   └── simulation-image/  # Serves PNG images
+│   ├── page.tsx           # Main page component
+│   └── layout.tsx         # Root layout
+├── python/                # Python simulation scripts
+│   ├── python-latest.py   # Latest simulation script
+│   ├── cancer_sim.py      # Cancer progression simulator
+│   ├── cancer_sim2.py     # Stage I cancer model
+│   └── venv/              # Python virtual environment
+├── outputs/               # Simulation outputs
+│   ├── python_latest_simulation.png
+│   ├── python_latest_simulation.json
+│   └── stage1_surgery_repop_outputs.json
+└── package.json           # Node.js dependencies
+```
+
+### Available Scripts
+
+**Node.js:**
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+**Python:**
+
+- `python python-latest.py` - Run latest stochastic simulation
+- `python cancer_sim2.py` - Run Stage I cancer model with multiple therapies
+- `python cancer_sim.py` - Run cancer progression simulator
+
+### API Endpoints
+
+- `GET /api/simulation` - Returns Stage I surgery repopulation data (JSON)
+- `GET /api/simulation-latest` - Returns latest stochastic simulation data (JSON)
+- `GET /api/simulation-image` - Returns latest simulation graph (PNG)
+
+### Troubleshooting
+
+**Python Virtual Environment Issues:**
+
+- If activation fails, make sure you're using the correct path separator for your OS
+- On Windows PowerShell, you may need: `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
+
+**Node.js Issues:**
+
+- Make sure Node.js version is 18 or higher: `node --version`
+- Clear `node_modules` and reinstall: `rm -rf node_modules && npm install`
+
+**Missing Output Files:**
+
+- Run the Python scripts first to generate the JSON and PNG files
+- Check that files are in the `outputs/` directory
+
+### Contributing
+
+1. Create a new branch for your feature
+2. Make your changes
+3. Test locally
+4. Commit and push to your branch
+5. Open a pull request
+
+For more details, see the individual README files:
+
+- `README_APP.md` - Frontend documentation
+- `python/README.md` - Python scripts documentation
