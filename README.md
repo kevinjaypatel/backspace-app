@@ -12,7 +12,7 @@ This guide will help you get the project running locally.
 - **Python 3.8+** (for the simulation scripts)
 - **Git** (to clone the repository)
 
-### Setup Instructions
+#### Setup Instructions
 
 #### 1. Clone the Repository
 
